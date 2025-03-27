@@ -12,12 +12,12 @@
 
 stdenv.mkDerivation rec{
   pname = "etcd-cpp-apiv3";
-  version = "2.10.19";
+  version = "unstable";
 
   src = fetchFromGitHub ({
-    owner = "microsoft";
-    repo = "cpprestsdk";
-    rev = "v${version}";
+    owner = "cyclesw";
+    repo = "etcd-cpp-apiv3";
+    rev = "fixSubmoduleHeadless";
     # sha256 = "sha256-zKam91x6wbG0vOxFXGQI/RKFf+fXGbn166YTjZUJ6yY=";
   });
 

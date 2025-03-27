@@ -12,7 +12,10 @@
         pkgs = import nixpkgs { inherit system; };
       });
 
-      # cpprest = pkgs: pkgs.callPackage ./cpprestsdk { };
+      cpprestsdk = pkgs: pkgs.callPackage ./cpprestsdk.nix { };
+      etcd-cpp-api = pkgs: pkgs.callPackage ./etcd-cpp-api.nix { 
+        cpprestsdk = cpprestsdk pkgs;
+      };
     in
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
@@ -39,7 +42,8 @@
               protobuf
               grpc
               openssl
-              (cpprest pkgs)
+              (cpprestsdk pkgs)
+              (etcd-cpp-api pkgs)
 
               ## dependence
             ];
