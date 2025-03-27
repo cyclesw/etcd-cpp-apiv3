@@ -4,10 +4,10 @@
   fetchFromGitHub,
   cmake,
   boost,
-  cpprestsdk,
+  openssl,
   grpc,
+  cpprestsdk,
   protobuf,
-  openssl
 }@ args:
 
 stdenv.mkDerivation rec{
@@ -18,16 +18,10 @@ stdenv.mkDerivation rec{
     owner = "cyclesw";
     repo = "etcd-cpp-apiv3";
     rev = "fixSubmoduleHeadless";
-    # sha256 = "sha256-zKam91x6wbG0vOxFXGQI/RKFf+fXGbn166YTjZUJ6yY=";
+    sha256 = "sha256-vHL947OXKaTFjDGbXgstPuPY1kaPezdWRIA8EHxDfYA=";
   });
 
   buildInputs = [];
   nativeBuildInputs = [ cmake ];
-  propagatedBuildInputs = [ openssl boost cpprestsdk grpc protobuf];
-
-  # cmakeFlags = [
-  #   "-DWERROR=OFF"
-  #   "-DCPPREST_EXCLUDE_WEBSOCKETS=ON"
-  #   "-DCPPREST_EXCLUDE_COMPRESSION=ON"
-  # ];
+  propagatedBuildInputs = [ openssl boost grpc cpprestsdk protobuf];
 }
