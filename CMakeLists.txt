@@ -215,7 +215,7 @@ include_directories(SYSTEM ${CPPREST_INCLUDE_DIR}
                            ${PROTOBUF_INCLUDE_DIRS}
                            ${GRPC_INCLUDE_DIR}
                            ${OPENSSL_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     if(ETCD_W_STRICT)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
@@ -240,19 +240,19 @@ if(BUILD_ETCD_TESTS)
   add_subdirectory(tst)
 endif()
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/etcd/KeepAlive.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/SyncClient.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/Response.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/Value.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/Watcher.hpp
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/KeepAlive.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/SyncClient.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/Response.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/Value.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/Watcher.hpp
               DESTINATION include/etcd)
 if(NOT BUILD_ETCD_CORE_ONLY)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/etcd/Client.hpp
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/Client.hpp
                   DESTINATION include/etcd)
 endif()
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/etcd/v3/action_constants.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/v3/Transaction.hpp
-              ${CMAKE_CURRENT_SOURCE_DIR}/etcd/v3/Member.hpp
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/v3/action_constants.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/v3/Transaction.hpp
+              ${CMAKE_CURRENT_SOURCE_DIR}/include/etcd/v3/Member.hpp
               DESTINATION include/etcd/v3)
 
 configure_file(etcd-cpp-api-config.in.cmake

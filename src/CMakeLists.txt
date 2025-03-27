@@ -53,6 +53,8 @@ else()
                             "${CMAKE_CURRENT_SOURCE_DIR}/Client.cpp")
     use_cxx(etcd-cpp-api)
     set_exceptions(etcd-cpp-api)
+    target_include_directories(etcd-cpp-api PUBLIC 
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>) 
     target_link_libraries(etcd-cpp-api PUBLIC
                           ${CPPREST_LIB}  # n.b.: the asynchronous client requires pplx in cpprestsdk
                           ${OPENSSL_LIBRARIES}
