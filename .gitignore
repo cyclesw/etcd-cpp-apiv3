@@ -6,3 +6,7 @@ default.etcd/
 
 # vscode-clangd
 .cache/
+.gitignore
+.direnv/
+.vscode/
+.github/
